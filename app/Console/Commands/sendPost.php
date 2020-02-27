@@ -2,10 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Api\ApiPost;
 use Illuminate\Console\Command;
 
 class sendPost extends Command
 {
+    private $api;
     /**
      * The name and signature of the console command.
      *
@@ -25,9 +27,11 @@ class sendPost extends Command
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ApiPost $api)
     {
         parent::__construct();
+
+        $this->api = $api;
     }
 
     /**
@@ -38,5 +42,7 @@ class sendPost extends Command
     public function handle()
     {
         $data = $this->option('data');
+
+        return $this->api->send($data);
     }
 }
