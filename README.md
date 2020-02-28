@@ -1,6 +1,7 @@
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
-###Interview Exercise
+### Interview Exercise
+
 The goal of this exercise is not if the code works but thought process into the solution and handling of failure.   
 
 Steps to Complete Interview Exercise:
@@ -12,30 +13,29 @@ Steps to Complete Interview Exercise:
 
 Comment which process handle question 4 and which one handles question 5. These are two separate processes.
 
-###Steps to run application
+### Steps to run application
 
 - Add cron entry:
 
-
-  	* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
-
-
+```
+     * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
 - Run migrations:
-
-
-  	php artisan migrate
-
+```
+     php artisan migrate
+```
 
 - Execute the following command:
 
-
-  	php artisan queue:listen
+```
+     php artisan queue:listen
+```
 
 - Start server and run
 
-
-  	php artisan serve
-
+```
+     php artisan serve
+```
 
 
 * * *
