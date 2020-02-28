@@ -2,36 +2,35 @@
 
 namespace App\Console\Commands;
 
-use App\Api\ApiPost;
+use App\FailedJob;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
-class sendPost extends Command
+class CheckFailedJobs extends Command
 {
-    private $api;
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'post:send {--data=*}';
+    protected $signature = 'retry:jobs';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Send Post Information';
+    protected $description = 'Check Table failed Jobs and retry all';
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ApiPost $api)
+    public function __construct()
     {
         parent::__construct();
-
-        $this->api = $api;
     }
 
     /**
@@ -41,8 +40,13 @@ class sendPost extends Command
      */
     public function handle()
     {
-        $data = $this->option('data');
+        $jobsList = FailedJob::all()->count();
 
-        return $this->api->send($data);
+        if($jobsList > 0){
+            Artisan::call('queue:retry all');
+        }
+
+        Log::error('retry jobs');
+
     }
 }

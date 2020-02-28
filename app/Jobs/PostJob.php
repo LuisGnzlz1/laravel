@@ -2,12 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Events\JobFailed;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class PostJob implements ShouldQueue
 {
@@ -40,6 +42,6 @@ class PostJob implements ShouldQueue
 
     public function failed(\Exception $exception)
     {
-
+        Log::alert('Jobs Failed');
     }
 }
