@@ -9,12 +9,15 @@ class PostController extends Controller
 {
     public function index(){
 
-        $data = [
-            'user_id' => 1,
-            'title' => Str::random(20),
-            'body' => 'lorem ipsum'
-        ];
 
-        PostJob::dispatch($data);
+        for ($i = 0; $i < 2; $i++) {
+            $data = [
+                'user_id' => 1,
+                'title' => Str::random(20),
+                'body' => 'lorem ipsum'
+            ];
+
+            PostJob::dispatch($data);
+        }
     }
 }

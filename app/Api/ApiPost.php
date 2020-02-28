@@ -23,15 +23,14 @@ class ApiPost extends ApiAbstract
                 'form_params' => $data
             ]);
 
-            return $response->getBody();
 
-            /* SAVE DATA TEST
+            //return $response->getBody();
+
             $u = new \App\Post;
             $u->user_id = $data['user_id'];
             $u->title = $data['title'];
             $u->body = $data['body'];
             $u->save();
-            */
 
         } catch (RequestException $e){
 

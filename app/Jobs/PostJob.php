@@ -37,4 +37,9 @@ class PostJob implements ShouldQueue
             '--data' => $this->data
         ]);
     }
+
+    public function failed(\Exception $exception)
+    {
+
+    }
 }
