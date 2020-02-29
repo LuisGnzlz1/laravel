@@ -9,16 +9,16 @@ class PostController extends Controller
 {
     public function index(){
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 1; $i++) {
 
-            //data example sender
+            //example data to send
             $data = [
                 'user_id' => 1,
                 'title' => Str::random(20),
                 'body' => 'lorem ipsum'
             ];
 
-            //ACTIVITY 4
+            //Activity 4
             PostJob::dispatch($data);
         }
     }

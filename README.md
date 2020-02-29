@@ -37,12 +37,14 @@ Comment which process handle question 4 and which one handles question 5. These 
      php artisan serve
 ```
 
-
+**Note:** If you want to modify the url of the command that sends a simple post request, you can do it from the .env file.
 * * *
 
 
-The Activity 4 was solved using jobs, to delegate the process to queues, if access to the post method failure, entered the cycle waiting for it to be online again.
+### Response to activity 4 and 5
+
+Activity 4 was solved using jobs to secure the data until the end, the process begins by placing the data in a queue and doing it recursively in case an error occurs with the url, if the url is active it executes its process in a normal way, but it stays in the cycle checking until it is active.
 
 
-To solve activity 5, in case any of the requests fails due to code or other reasons, it will be treated equally with the queues, this will go to the table of failures, to raise and execute that action again an artisan command was used to verify if in this table there are failed cases and return them to the queues process.
+To solve activity 5 use an artisan command to verify those requests that gave an error and process them according to the given error. The command runs in the background every minute.
 

@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        //command to verify table failed_jobs
+        //command to verify table failed_jobs - Activity 5
         $schedule->command(CheckFailedJobs::class)->everyMinute();
     }
 
